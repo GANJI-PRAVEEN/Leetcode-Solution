@@ -1,20 +1,12 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        int myxor=0;
-        sort(nums.begin(),nums.end());
-        int n=nums.size();
-        for(int i=0;i<n;i++){
-            myxor=myxor^nums[i];
-            int temp=nums[i];
-            if(myxor==0 and i>0){
-                nums[i]=1e9;
-                nums[i-1]=1e9;
-            }
-            myxor=temp;
-        }
+        unordered_map<int,int>mp;
         for(auto it:nums){
-            if(it!=1e9)return it;
+            mp[it]++;
+        }
+        for(auto it:mp){
+            if(it.second==1)return it.first;
         }
         return -1;
     }
