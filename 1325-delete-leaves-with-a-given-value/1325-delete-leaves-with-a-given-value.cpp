@@ -18,7 +18,7 @@ public:
         if(!root)return root;
         root->left=solve(root->left,k);
         root->right=solve(root->right,k);
-        if(isLeaf(root) and root->val==k){
+        if(root->left==NULL and root->right==NULL and root->val==k){
             return NULL;
         }
         return root;
