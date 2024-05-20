@@ -1,14 +1,14 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
-        int i=1;
-        int n=nums.size();
-        while(i<n){
-            if(nums[i-1]!=nums[i])return nums[i-1];
-            if(nums[i+1]!=nums[i])return nums[i+1];
-            i+=3;
+        int one=0;
+        int two=0;
+        for(auto it:nums){
+            //if it in one and not in two then it will be addded to one
+            one=(one^it)&~two;
+            //if it in two but not in one then it will be added to two means repeating num
+            two=(two^it)&~one;
         }
-        return nums[n-1];
+        return one;
     }
 };
