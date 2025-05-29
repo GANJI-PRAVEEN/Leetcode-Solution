@@ -1,21 +1,18 @@
 class Solution {
 public:
-    bool prime(int n){
-        int cnt=0;
-        for(int i=1;i<=sqrt(n);i++){
-            if(n%i==0){
-                cnt++;
-                if((n/i)!=i)cnt++;
-            }
-
-            if(cnt>2)break;
-        }
-        return cnt==2;
-    }
     int countPrimes(int n) {
         int cnt=0;
-        for(int i=1;i<n;i++){
-            if(prime(i)){
+        //Sieve of eratosthenes
+        vector<int>primes(n+1,1);
+        for(long i=2;i<=n;i++){
+            if(primes[i]==1){
+                for(long j=i*i;j<=n;j+=i){
+                    primes[j]=0;
+                }
+            }
+        }
+        for(int i=2;i<n;i++){
+            if(primes[i]){
                 cnt++;
             }
         }
