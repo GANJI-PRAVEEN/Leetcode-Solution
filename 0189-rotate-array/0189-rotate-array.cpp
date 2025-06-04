@@ -1,12 +1,19 @@
 class Solution {
 public:
+    void rev(vector<int>&nums,int start,int end){
+        end=end-1;
+        while(start<=end){
+            swap(nums[start],nums[end]);
+            start++;
+            end--;
+        }
+    }
     void rotate(vector<int>& nums, int k) {
         int n=nums.size();
-        vector<int>rotatedArray(n,0);
-        for(int i=0;i<n;i++){
-            rotatedArray[(i+k)%n] = nums[i];
-        }
-        nums = rotatedArray;
+        k = k%n;
+        rev(nums,0,(n-k));
+        rev(nums,(n-k),n);
+        rev(nums,0,n);
 
     }
 };
