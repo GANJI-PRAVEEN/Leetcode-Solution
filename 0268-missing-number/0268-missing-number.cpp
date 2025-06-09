@@ -13,8 +13,19 @@ public:
         }
         return -1;
     }
+    int betterApproach(vector<int>arr,int n){
+        vector<bool>hash(n+1,false);
+        for(auto it:arr){
+            hash[it]=true;
+        }
+        for(auto it:hash){
+            if(!it)return it;
+        }
+        return -1;
+    }
     int missingNumber(vector<int>& nums) {
         int n=nums.size();
         return bruteApproach(nums,n);
+        return betterApproach(nums,n);
     }
 };
