@@ -18,14 +18,14 @@ public:
         for(auto it:arr){
             hash[it]=true;
         }
-        for(auto it:hash){
-            if(!it)return it;
+        for(int i=0;i<=n;i++){
+            if(hash[i]==false)return i;
         }
         return -1;
     }
     int missingNumber(vector<int>& nums) {
         int n=nums.size();
-        return bruteApproach(nums,n);
+        // return bruteApproach(nums,n);
         return betterApproach(nums,n);
     }
 };
