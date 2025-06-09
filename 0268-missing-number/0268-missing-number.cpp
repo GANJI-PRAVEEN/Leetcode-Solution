@@ -31,10 +31,22 @@ public:
         }
         return sum-s2;
     }
+    int mostOptimisedApproach(vector<int>arr,int n){
+        int xor1 = 0;
+        for(int i=0;i<=n;i++){
+            xor1 ^=i;
+        }
+        int xor2 =0;
+        for(auto it:arr){
+            xor2^=it;
+        }
+        return xor1^xor2;
+    }
     int missingNumber(vector<int>& nums) {
         int n=nums.size();
         // return bruteApproach(nums,n);
         // return betterApproach(nums,n);
-        return optimalApproach(nums,n);
+        // return optimalApproach(nums,n);
+        return mostOptimisedApproach(nums,n);
     }
 };
