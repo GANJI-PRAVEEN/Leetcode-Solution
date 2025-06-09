@@ -1,15 +1,19 @@
 class Solution {
 public:
-    int removeDuplicates(vector<int>& nums) {
-        set<int>s ;
-        for(auto it:nums){
+    int bruteApproach(vector<int>&arr){
+        int n=arr.size();
+        set<int>s;
+        for(auto it:arr){
             s.insert(it);
         }
-        int index =0;
+        int j=0;
         for(auto it:s){
-            nums[index]=it;
-            index++;
+            arr[j]=it;
+            j++;
         }
-        return index;
+        return j;
+    }
+    int removeDuplicates(vector<int>& nums) {
+        return bruteApproach(nums);
     }
 };
