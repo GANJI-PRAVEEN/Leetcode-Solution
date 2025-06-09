@@ -23,9 +23,18 @@ public:
         }
         return -1;
     }
+    int optimalApproach(vector<int>arr,int n){
+        int sum = (n*(n+1))/2;
+        int s2=0;
+        for(auto it:arr){
+            s2+=it;
+        }
+        return sum-s2;
+    }
     int missingNumber(vector<int>& nums) {
         int n=nums.size();
         // return bruteApproach(nums,n);
-        return betterApproach(nums,n);
+        // return betterApproach(nums,n);
+        return optimalApproach(nums,n);
     }
 };
