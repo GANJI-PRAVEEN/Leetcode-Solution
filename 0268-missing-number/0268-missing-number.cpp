@@ -10,8 +10,18 @@ public:
         }
         return -1;
     }
+    int betterApproach(vector<int>arr,int n){
+        sort(arr.begin(),arr.end());
+        for(int i=0;i<n;i++){
+            if(arr[i]!=i)return i;
+        }
+        if(arr[n-1]!=n)return n;
+        return -1;
+
+    }
     int missingNumber(vector<int>& nums) {
         int n=nums.size();
-        return bruteForce(nums,n);
+        // return bruteForce(nums,n);
+        return betterApproach(nums,n);
     }
 };
