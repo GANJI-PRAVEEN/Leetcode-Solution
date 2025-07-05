@@ -27,10 +27,20 @@ public:
         int s2 = (n*(n+1))/2;
         return s2-sum;
     }
+    int mostOptimised(vector<int>arr,int n){
+        int xor1 = 0;
+        int xor2 =0;
+        for(int i=0;i<n;i++){
+            xor1^=(i+1);
+            xor2^=arr[i];
+        }
+        return xor1^xor2;
+    }
     int missingNumber(vector<int>& nums) {
         int n=nums.size();
         // return bruteForce(nums,n);
         // return betterApproach(nums,n);
-        return optimalApproach(nums,n);
+        // return optimalApproach(nums,n);
+        return mostOptimised(nums,n);
     }
 };
