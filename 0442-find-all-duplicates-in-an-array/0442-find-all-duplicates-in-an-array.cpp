@@ -22,8 +22,23 @@ public:
         }
         return ans;
     }
+    vector<int>optimalApproach(vector<int>nums){
+        int n=nums.size();
+        vector<int>ans;
+        vector<bool>hash(n+1,false);
+        for(auto it:nums){
+            if(!hash[it]){
+                hash[it]=true;
+            }
+            else{
+                ans.push_back(it);
+            }
+        }
+        return ans;
+    }
     vector<int> findDuplicates(vector<int>& nums) {
         // return bruteForce(nums);
-        return betterApproach(nums);
+        // return betterApproach(nums);
+        return optimalApproach(nums);
     }
 };
