@@ -1,15 +1,24 @@
 class Solution {
 public:
-    int missingNumber(vector<int>& nums) {
-        int xor1=0;
-        int xor2=0;
+    int bruteForce(vector<int>nums){
         int n=nums.size();
-        for(int i=0;i<=n;i++){
-            xor1^=i;
-        } 
-        for(auto it:nums)   {
-            xor2^=it;
-        }  
-        return xor1^xor2;      
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<n;i++){
+            if(nums[i]!=i)return i;
+        }
+        return n;
+    }
+    int betterApproach(vector<int>nums){
+        int n=nums.size();
+        int sum1 = (n*(n+1))/2;
+        int sum2=0;
+        for(auto it:nums){
+            sum2+=it;
+        }
+        return sum1-sum2;
+    }
+    int missingNumber(vector<int>& nums) {
+        // return bruteForce(nums);
+        return betterApproach(nums);
     }
 };
