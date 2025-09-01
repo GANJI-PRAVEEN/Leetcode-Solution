@@ -1,21 +1,30 @@
 class Solution {
 public:
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-        int i=m-1;
-        int j=n-1;
-        int k=m+n-1;
-        cout<<j<<endl;
-        while(j>=0){
-            if(i>=0 and nums1[i]>=nums2[j]){
-                nums1[k] = nums1[i];
-                i-=1;
+    void bruteForce(vector<int>& nums1,vector<int>& nums2,int m,int n){
+        vector<int>temp;
+        int i=0;
+        int j=0;
+        while(i<m and j<n){
+            if(nums1[i]<=nums2[j]){
+                temp.push_back(nums1[i]);
+                i++;
             }
             else{
-                nums1[k] = nums2[j];
-                j-=1;
+                temp.push_back(nums2[j]);
+                j++;
             }
-            k--;
         }
-
+        while(i<m){
+            temp.push_back(nums1[i]);
+            i++;
+        }
+        while(j<n){
+            temp.push_back(nums2[j]);
+            j++;
+        }
+        nums1 = temp;
+    }
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        bruteForce(nums1,nums2,m,n);
     }
 };
