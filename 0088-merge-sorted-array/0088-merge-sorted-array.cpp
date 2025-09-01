@@ -2,21 +2,20 @@ class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         int i=m-1;
-        int j=0;
-        while(i>=0 and j<n){
-            if(nums1[i]>nums2[j]){
-                int temp = nums1[i];
-                nums1[i]=nums2[j];
-                nums2[j]=temp;
-                i--;
-                j++;
+        int j=n-1;
+        int k=m+n-1;
+        cout<<j<<endl;
+        while(j>=0){
+            if(i>=0 and nums1[i]>=nums2[j]){
+                nums1[k] = nums1[i];
+                i-=1;
             }
-            else break;
+            else{
+                nums1[k] = nums2[j];
+                j-=1;
+            }
+            k--;
         }
-        j=0;
-        for(int i=m;i<(m+n);i++){
-            nums1[i] = nums2[j++];
-        }
-    
+
     }
 };
