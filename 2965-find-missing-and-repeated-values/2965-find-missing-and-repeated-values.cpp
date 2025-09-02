@@ -1,37 +1,31 @@
 class Solution {
 public:
+vector<int> bruteForce(vector<vector<int>>& grid,int n) {
+    int missing = -1;
+    int repeat = -1;
+    for(int i=1;i<=(n*n);i++){
+        int cnt=0;
+        for(int j=0;j<n;j++){
+            for(int k=0;k<n;k++){
+                if(grid[j][k]==i)cnt++;
+            }
+            
+        }
+        if(cnt==0){
+                missing = i;
+            }
+        if(cnt==2){
+            repeat = i;
+        }
+        if(missing!=-1 and repeat!=-1)break;
+        
+    }
+    return {repeat,missing};
+}
     vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
-        vector<int>nums;
-        for(auto it:grid){
-            for(auto k:it){
-                nums.push_back(k);
-            }
-        }
-        sort(nums.begin(),nums.end());
-        int n=nums.size();
-        int l=0;
-        int i=1;
-        int miss=n;
-        int repeat=-1;
-        while(l<n and i<=n){
-            if(l+1<n and nums[l]==nums[l+1]){
-                repeat=nums[l];
-                l++;
-            }
-            else if(nums[l]!=i){
-                miss=i;
-                i++;
-            }
-            else{
-                l++;
-                i++;
-                
-            }
-        }
-        // for(auto it:nums){
-        //     cout<<it<<endl;
-        // }
-        return {repeat,miss};
+        int n=grid.size();
+        return bruteForce(grid,n);
+        
         
     }
 };
